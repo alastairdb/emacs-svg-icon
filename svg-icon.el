@@ -101,6 +101,7 @@ Cached version is returned if it exists unless FORCE-RELOAD is t."
         (let ((url-automatic-caching t)
               (filename (url-cache-create-filename url)))
           (with-current-buffer (url-retrieve-synchronously url)
+            (url-cache-prepare filename)
             (write-region (point-min) (point-max) filename))))
 
     ;; Get data from cache
